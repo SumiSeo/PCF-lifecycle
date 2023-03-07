@@ -1,0 +1,25 @@
+[
+  {
+    "Options": "",
+    "Value": "",
+    "controlType": "TextField",
+    "default": "Brendon",
+    "id": 1,
+    "label": "What's your name"
+  },
+  {
+    "Options": "",
+    "Value": "",
+    "controlType": "Date",
+    "default": "12-27-1984",
+    "id": 2,
+    "label": "What's your birthdate"
+  },
+  {
+    "Options": "",
+    "Value": "",
+    "controlType": "Slider",
+    "default": "10",
+    "id": 3
+  }
+]
