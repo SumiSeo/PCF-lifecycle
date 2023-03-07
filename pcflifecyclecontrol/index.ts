@@ -7,7 +7,6 @@ export class pcflifecyclecontrol
    * Empty constructor.
    */
   private _container: HTMLDivElement;
-
   private _controlViewRendred: boolean;
 
   constructor() {}
@@ -28,6 +27,7 @@ export class pcflifecyclecontrol
   ): void {
     // Add control initialization code
     this._container = container;
+    this._container.style.backgroundColor = "yellow";
     this._container.innerHTML = context.parameters.Label.raw || "";
     this._controlViewRendred = false;
   }
@@ -45,6 +45,7 @@ export class pcflifecyclecontrol
 
     const srcUrl = context.parameters.Label.raw;
     // srcUrl && this._Iframe.setAttribute("src", srcUrl);
+    this._container.innerHTML = context.parameters.Label.raw || "";
   }
 
   /**
