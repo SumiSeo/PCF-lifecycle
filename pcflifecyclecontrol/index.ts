@@ -6,8 +6,8 @@ export class pcflifecyclecontrol
   /**
    * Empty constructor.
    */
-  private _Iframe: HTMLElement;
   private _container: HTMLDivElement;
+
   private _controlViewRendred: boolean;
 
   constructor() {}
@@ -28,6 +28,7 @@ export class pcflifecyclecontrol
   ): void {
     // Add control initialization code
     this._container = container;
+    this._container.innerHTML = context.parameters.Label.raw || "";
     this._controlViewRendred = false;
   }
 
@@ -38,12 +39,12 @@ export class pcflifecyclecontrol
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
     this._controlViewRendred = true;
-    this._Iframe = document.createElement("iframe");
-    this._Iframe.setAttribute("class", "PCF_Iframe");
-    this._container.appendChild(this._Iframe);
+    // this._Iframe = document.createElement("iframe");
+    // this._Iframe.setAttribute("class", "PCF_Iframe");
+    // this._container.appendChild(this._Iframe);
 
-    const srcUrl = context.parameters.sourceProperty.raw;
-    srcUrl && this._Iframe.setAttribute("src", srcUrl);
+    const srcUrl = context.parameters.Label.raw;
+    // srcUrl && this._Iframe.setAttribute("src", srcUrl);
   }
 
   /**
