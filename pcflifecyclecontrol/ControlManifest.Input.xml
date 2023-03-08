@@ -19,6 +19,7 @@
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="Label" display-name-key="Label" description-key="Label" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="Test" display-name-key="Test" description-key="Test" of-type="SingleLine.Text" usage="bound" required="true" />
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:

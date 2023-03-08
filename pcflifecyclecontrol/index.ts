@@ -1,4 +1,6 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
+import userInfo from "../userinfo.json";
+import { User } from "../types/UserType";
 
 export class pcflifecyclecontrol
   implements ComponentFramework.StandardControl<IInputs, IOutputs>
@@ -7,9 +9,12 @@ export class pcflifecyclecontrol
    * Empty constructor.
    */
   private _container: HTMLDivElement;
-  private _controlViewRendred: boolean;
+  private _userList: HTMLUListElement;
 
-  constructor() {}
+  constructor() {
+    console.log(userInfo);
+    console.log(userInfo[0]);
+  }
 
   /**
    * Used to initialize the control instance. Controls can kick off remote server calls and other initialization actions here.
@@ -19,6 +24,23 @@ export class pcflifecyclecontrol
    * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
    * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
    */
+
+  private createTab(userInfo: User[]) {
+    console.log("create Tab is called");
+
+    let li;
+    userInfo.map((user: User) => {
+      li = document.createElement("li") as HTMLLIElement;
+      li.innerText = user.first_name;
+      li.setAttribute("key", user.first_name);
+      console.log(li);
+      console.log(user);
+      // this._userList.appendChild(li);
+    });
+    console.log("ul");
+    console.log(this._userList);
+  }
+
   public init(
     context: ComponentFramework.Context<IInputs>,
     notifyOutputChanged: () => void,
@@ -29,7 +51,9 @@ export class pcflifecyclecontrol
     this._container = container;
     this._container.style.backgroundColor = "yellow";
     this._container.innerHTML = context.parameters.Label.raw || "";
-    this._controlViewRendred = false;
+    console.log(this._container);
+    this.createTab(userInfo);
+    //let user add the new value and add json config list
   }
 
   /**
@@ -38,13 +62,7 @@ export class pcflifecyclecontrol
    */
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
-    this._controlViewRendred = true;
-    // this._Iframe = document.createElement("iframe");
-    // this._Iframe.setAttribute("class", "PCF_Iframe");
-    // this._container.appendChild(this._Iframe);
 
-    const srcUrl = context.parameters.Label.raw;
-    // srcUrl && this._Iframe.setAttribute("src", srcUrl);
     this._container.innerHTML = context.parameters.Label.raw || "";
   }
 
